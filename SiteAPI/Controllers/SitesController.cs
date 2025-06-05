@@ -22,9 +22,14 @@ namespace SiteAPI.Controllers
         }
 
         [HttpPost]
-        public async Task PostCar([FromBody] Models.Site site)
+        public async Task AddSite([FromBody] Models.Site site)
         {
-            await _siteManager.AddElement(site);
+            await _siteManager.AddSiteAsync(site);
+        }
+        [HttpDelete("{id}")]
+        public async Task DeleteSite(int id)
+        {
+            await _siteManager.DeleteSiteAsync(id);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using SiteAPI.Data;
+using System.Threading.Tasks;
 
 namespace SiteAPI.Controllers
 {
@@ -39,6 +40,12 @@ namespace SiteAPI.Controllers
         public async Task PostElement([FromBody] Models.Element element)
         {
             await _elementManager.AddElement(element);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task DeleteTransaction(int id)
+        {
+            await _elementManager.DeleteElementAsync(id);
         }
     }
 }

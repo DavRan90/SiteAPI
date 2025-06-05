@@ -39,29 +39,11 @@ namespace SiteAPI.Data
             await _context.SaveChangesAsync();
         }
 
-        public static void CreateTransaction(Models.Element element)
+        public async Task DeleteElementAsync(int id)
         {
-            element.Id = Random.Shared.Next(1, 10000);
-            Elements.Add(element);
+            var existingElement = await _context.Elements.Where(e => e.Id == id).FirstOrDefaultAsync();
+            _context.Elements.Remove(existingElement);
+            await _context.SaveChangesAsync();
         }
-
-        public static void UpdateElement(int id, Models.Element element)
-        {
-            var existingElement = Elements.Where(e => e.Id == id).FirstOrDefault();
-            if (existingElement != null)
-            {
-                existingElement.Id = element.Id;
-                existingElement.Position = element.Position;
-                existingElement.Content = element.Content;
-                existingElement.SiteId = element.SiteId;
-                existingElement.ElementType = element.ElementType;
-            }
-        }
-
-        //public async Task<List<Models.Element>> GetElements()
-        //{
-        //    List<Models.Element> elements = await _context.Elements.ToListAsync();
-        //    return elements;
-        //}
     }
 }
