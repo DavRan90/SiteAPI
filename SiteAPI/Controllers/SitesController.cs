@@ -21,6 +21,12 @@ namespace SiteAPI.Controllers
             return sites;
         }
 
+        [HttpPut("{id}")]
+        public async Task PutElement(int id, [FromBody] Models.Site site)
+        {
+            await _siteManager.UpdateSiteAsync(id, site);
+        }
+
         [HttpPost]
         public async Task AddSite([FromBody] Models.Site site)
         {

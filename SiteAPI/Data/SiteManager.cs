@@ -22,6 +22,19 @@ namespace SiteAPI.Data
             List<Models.Site> sites = await _context.Sites.ToListAsync();
             return sites;
         }
+        public async Task UpdateSiteAsync(int id, Site site)
+        {
+            var existingSite = await _context.Sites.Where(s => s.Id == id).FirstOrDefaultAsync();
+            if (existingSite != null)
+            {
+                existingSite.Id = site.Id;
+                existingSite.Title = site.Title;
+                existingSite.UserId = site.UserId;
+                existingSite.Date = site.Date;
+                existingSite.Elements = site.Elements;
+            }
+            await _context.SaveChangesAsync();
+        }
         public async Task DeleteSiteAsync(int id)
         {
             var existingSite = await _context.Sites.Where(s => s.Id == id).FirstOrDefaultAsync();
