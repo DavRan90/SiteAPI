@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using SiteAPI.Models;
 
@@ -11,9 +12,11 @@ using SiteAPI.Models;
 namespace SiteAPI.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    partial class MyDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250606144941_addedTitless")]
+    partial class addedTitless
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -35,11 +38,6 @@ namespace SiteAPI.Migrations
                         .HasColumnType("nvarchar(max)")
                         .HasAnnotation("Relational:JsonPropertyName", "content");
 
-                    b.Property<string>("Discriminator")
-                        .IsRequired()
-                        .HasMaxLength(8)
-                        .HasColumnType("nvarchar(8)");
-
                     b.Property<int>("ElementType")
                         .HasColumnType("int")
                         .HasAnnotation("Relational:JsonPropertyName", "elementType");
@@ -57,10 +55,6 @@ namespace SiteAPI.Migrations
                     b.HasIndex("SiteId");
 
                     b.ToTable("Elements");
-
-                    b.HasDiscriminator().HasValue("Element");
-
-                    b.UseTphMappingStrategy();
                 });
 
             modelBuilder.Entity("SiteAPI.Models.Site", b =>
@@ -83,21 +77,6 @@ namespace SiteAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Sites");
-                });
-
-            modelBuilder.Entity("SiteAPI.Models.Menu", b =>
-                {
-                    b.HasBaseType("SiteAPI.Models.Element");
-
-                    b.PrimitiveCollection<string>("MenuLink")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.PrimitiveCollection<string>("MenuTitles")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasDiscriminator().HasValue("Menu");
                 });
 
             modelBuilder.Entity("SiteAPI.Models.Element", b =>

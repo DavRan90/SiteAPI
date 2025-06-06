@@ -11,5 +11,7 @@ namespace SiteAPI.Models
 
         public DbSet<Models.Element> Elements { get; set; }
         public DbSet<Models.Site> Sites { get; set; }
+
+        public DbSet<Models.Menu> Menus { get; set; }
     }
 }
