@@ -11,6 +11,8 @@ namespace SiteAPI.Models
         public int? Position { get; set; }
         [JsonPropertyName("content")]
         public string? Content { get; set; }
+        [JsonPropertyName("menuTitles")]
+        public List<string>? MenuTitles { get; set; } = new(3);
         [JsonPropertyName("elementType")]
         public ElementTypes ElementType { get; set; }
         [JsonPropertyName("siteId")]

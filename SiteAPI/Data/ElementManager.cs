@@ -30,6 +30,7 @@ namespace SiteAPI.Data
             var existingElement = await _context.Elements.Where(e => e.Id == id).FirstOrDefaultAsync();
             if (existingElement != null)
             {
+                existingElement.MenuTitles = element.MenuTitles;
                 existingElement.Id = element.Id;
                 existingElement.Position = element.Position;
                 existingElement.Content = element.Content;
