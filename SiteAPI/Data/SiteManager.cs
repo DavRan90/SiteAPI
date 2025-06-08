@@ -32,6 +32,7 @@ namespace SiteAPI.Data
                 existingSite.UserId = site.UserId;
                 existingSite.Date = site.Date;
                 existingSite.Elements = site.Elements;
+                existingSite.BackgroundColorString = site.BackgroundColorString;
             }
             await _context.SaveChangesAsync();
         }

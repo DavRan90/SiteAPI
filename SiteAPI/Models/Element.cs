@@ -7,8 +7,6 @@ namespace SiteAPI.Models
     {
         [JsonPropertyName("id")]
         public int Id { get; set; }
-        [JsonPropertyName("backgroundColor")]
-        public ConsoleColor BackgroundColor { get; set; }
 
         [JsonPropertyName("position")]
         public int? Position { get; set; }
