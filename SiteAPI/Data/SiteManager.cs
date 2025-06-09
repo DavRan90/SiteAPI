@@ -33,6 +33,8 @@ namespace SiteAPI.Data
                 existingSite.Date = site.Date;
                 existingSite.Elements = site.Elements;
                 existingSite.BackgroundColorString = site.BackgroundColorString;
+                existingSite.FontColorString = site.FontColorString;
+                existingSite.FontFamilyString = site.FontFamilyString;
             }
             await _context.SaveChangesAsync();
         }
