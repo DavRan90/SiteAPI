@@ -31,6 +31,7 @@ namespace SiteAPI.Data
             if (existingElement != null)
             {
                 existingElement.MenuTitles = element.MenuTitles;
+                existingElement.MenuLinks = element.MenuLinks;
                 existingElement.Id = element.Id;
                 existingElement.Position = element.Position;
                 existingElement.Content = element.Content;
