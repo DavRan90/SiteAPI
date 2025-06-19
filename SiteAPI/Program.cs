@@ -13,7 +13,7 @@ namespace SiteAPI
             // Add services to the container.
 
             var connectionString = builder.Configuration.GetConnectionString("MyConnection");
-            Console.WriteLine("Connectionstring: " + connectionString);
+            //Console.WriteLine("Connectionstring: " + connectionString);
             builder.Services.AddDbContext<Models.MyDbContext>(options => options.UseSqlServer(connectionString));
             builder.Services.AddTransient<ElementManager>();
             builder.Services.AddTransient<SiteManager>();

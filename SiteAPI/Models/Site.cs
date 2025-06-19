@@ -6,6 +6,7 @@ namespace SiteAPI.Models
     public class Site
     {
         public int Id { get; set; }
+        public bool IsStartSite { get; set; }
         public string? Title { get; set; }
         public string? BackgroundColorString { get; set; }
         public string? FontColorString { get; set; }

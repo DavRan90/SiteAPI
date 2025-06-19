@@ -28,6 +28,7 @@ namespace SiteAPI.Data
             if (existingSite != null)
             {
                 existingSite.Id = site.Id;
+                existingSite.IsStartSite = site.IsStartSite;
                 existingSite.Title = site.Title;
                 existingSite.UserId = site.UserId;
                 existingSite.Date = site.Date;
